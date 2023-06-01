@@ -1,0 +1,55 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+    <div class="container">
+      <a class="navbar-brand text-nowrap" routerLink="['/']">Leave Management App</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target=".navbar-collapse"
+        aria-label="Toggle navigation"
+        [attr.aria-expanded]="isExpanded"
+        (click)="toggle()"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="container"></div>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between"
+        [ngClass]="{ show: isExpanded }"
+      >
+        <ul class="navbar-nav flex-grow">
+          <li
+            class="nav-item"
+            routerLinkActive="['link-active']"
+            routerLinkActiveOptions="{ exact: true }"
+          >
+            <a class="nav-link text-white text-nowrap" routerLink="['/']">Home</a>
+          </li>
+          <li class="nav-item" routerLinkActive="['link-active']">
+            <a class="nav-link text-white text-nowrap" routerLink="['/counter']"
+              >Apply For Leave</a
+            >
+          </li>
+          <li class="nav-item" routerLinkActive="['link-active']">
+            <a class="nav-link text-white text-nowrap" routerLink="['/fetch-data']"
+              >My Leave</a>
+          </li>
+          <div class="dropdown">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" (click)="showDropdown = !showDropdown">
+                Leave Management
+              </a>
+              <ul class="dropdown-menu-dark position-absolute bg-dark p-2 list-unstyled" *ngIf="showDropdown">
+                <li><a class="dropdown-item" href="#">Leave Types</a></li>
+                <li><a class="dropdown-item" href="#">Leave Allocations</a></li>
+                <li><a class="dropdown-item" href="#">Leave Requests</a></li>
+                <li><a class="dropdown-item" href="#">Employee Management</a></li>
+              </ul>
+            </li>
+          </div>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

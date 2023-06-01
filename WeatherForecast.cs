@@ -1,4 +1,4 @@
-namespace my_new_app;
+namespace MyNewApp;
 
 public class WeatherForecast
 {
