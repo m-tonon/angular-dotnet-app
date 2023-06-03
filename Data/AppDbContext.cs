@@ -1,14 +1,17 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MyNewApp.Web.Data
+namespace LeaveManagement.Web.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<Employee>
     {
-        // Define your entity DbSet properties here
-
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<LeaveType> LeaveTypes { get; set; }
+        public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
+
     }
 }
