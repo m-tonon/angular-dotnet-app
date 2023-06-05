@@ -209,7 +209,7 @@ namespace MyNewApp.Migrations
                         column: x => x.LeaveTypeId,
                         principalTable: "LeaveTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 })
                 .Annotation("MySQL:Charset", "utf8mb4");
 
