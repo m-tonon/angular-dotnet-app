@@ -1,7 +1,6 @@
 using LeaveManagement.Web.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Encodings.Web;
 
 namespace LeaveManagement.Web.Controllers;
@@ -17,6 +16,8 @@ public class LeaveTypesController : Controller
     _context = context;
   }
 
+  // GET: LeaveTypes
+  [HttpGet]
   public async Task<IActionResult> Index()
   {
     var leaveTypes = await _context.LeaveTypes.ToListAsync(); // Select * from LeaveTypes
@@ -43,7 +44,6 @@ public class LeaveTypesController : Controller
   }
 
   // GET: LeaveTypes/Create
-
   public IActionResult Create()
   {
     return Ok();
@@ -65,6 +65,7 @@ public class LeaveTypesController : Controller
   }
 
   // GET: LeaveTypes/Edit/5
+  [HttpGet("edit/{id}")]
   public async Task<IActionResult> Edit(int? id)
   {
     if (id == null)
@@ -81,7 +82,7 @@ public class LeaveTypesController : Controller
   }
 
   // POST: LeaveTypes/Edit/5
-  [HttpPost]
+  [HttpPost("edit/{id}")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> Edit(int id, [Bind("Name, DefaultDays, Id, DateCreated, DateModified")] LeaveType leaveType)
   {
@@ -114,6 +115,7 @@ public class LeaveTypesController : Controller
   }
 
   // GET: LeaveTypes/Delete/5
+  [HttpGet("delete/{id}")]
   public async Task<IActionResult> Delete(int? id)
   {
     if (id == null)
@@ -132,7 +134,7 @@ public class LeaveTypesController : Controller
   }
 
   // POST: LeaveTypes/Delete/5
-  [HttpPost, ActionName("Delete")]
+  [HttpPost("delete/{id}"), ActionName("Delete")]
   [ValidateAntiForgeryToken]
   public async Task<IActionResult> DeleteConfirmed(int id)
   {
